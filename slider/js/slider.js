@@ -1,3 +1,43 @@
+//  À¿—— »√–€
+
+function Slider() {
+    var self = this;
+
+    var images = [];
+
+    var sliderTimer;
+
+    // œ–»¬¿“Õ€≈ ‘”Õ ÷»»
+
+    function changeSlide(direction) {
+
+    }
+
+    function refreshTimers(func) {
+        if(sliderTimer) clearTimeout(sliderTimer);
+        sliderTimer = setTimeout(func, 5000);
+    }
+
+    // œ”¡À»◊Õ€≈ Ã≈“Œƒ€
+
+    self.create = function() {
+
+    };
+
+    self.changeToPrev = function () {
+
+    };
+
+    self.changeToNext = function () {
+
+    };
+
+    self.stop = function () {
+        if(sliderTimer) clearTimeout(sliderTimer);
+    };
+
+}
+
 $(document).ready(function() {
 
     var slider = $(".slider");
