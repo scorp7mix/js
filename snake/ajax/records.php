@@ -23,9 +23,8 @@
         die();
     }
 
-    $i = 0;
-    foreach($records as $record) {
-        $response .= "<tr><td>" . ++$i . "</td><td>" . $record['name'] . "</td><td>" . $record['score'] . "</td></tr>";
+    foreach($records as $key => $record) {
+        $response .= "<tr><td>" . $key . "</td><td>" . $record['name'] . "</td><td>" . $record['score'] . "</td></tr>";
     }
 
 	echo $response;

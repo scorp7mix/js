@@ -26,6 +26,7 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
     var gameTimer;
     var pause;
+    var speed;
 
     var alerts = $('#alerts');
 
@@ -111,7 +112,7 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
         $('#length').html("Длина змея: " + snake.getLength());
         self.score = snake.getLength();
-        setGameSpeed(300 - snake.getLength() * 3);
+        setGameSpeed(speed = 300 - snake.getLength() * 3);
 
         if(snake.getLength() + food.size + anti.size == rows * cols) {
             alerts.html('ПОБЕДА!!!');
@@ -147,7 +148,7 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
     // постановка/снятие паузы
     self.togglePause = function () {
         if(!pause) {
-            setGameSpeed(0);
+            clearInterval(gameTimer);
             alerts.html("Игра на паузе");
         } else {
             setGameSpeed(speed);
