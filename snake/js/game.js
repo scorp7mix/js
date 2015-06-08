@@ -180,30 +180,6 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
         );
     };
 
-/*
-*
-* Функция пересчета рекордов перемещена на сторону "сервера"
-*
-        candidate = candidate || {name: '', score: 0};
-        scores.reduce(function(pv, cur, ind, arr) {
-            if(cur.score < pv.score) {
-                var t = {name: cur.name, score: cur.score};
-                arr[ind].name = pv.name;
-                arr[ind].score = pv.score;
-                return t;
-            } else {
-                return pv;
-            }
-        }, candidate);
-
-        for(var i = 0; i < 5; i++) {
-            var tdInRow = $('.container table tr').eq(i).find('td');
-            tdInRow.eq(1).html(scores[i].name);
-            tdInRow.eq(2).html(scores[i].score);
-            if(i == 4) minScore = scores[i].score;
-        }
-*/
-
     // обновление игрового поля
     self.reset = function(foodCount, antiCount) {
 
