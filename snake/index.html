@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GAME</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" media="screen"/>
+</head>
+<body>
+    <div id="matrix1"></div>
+    <div id="title">Игра закончена</div>
+    <div id="options">
+        <div class="container">
+            <p><b>Пауза - пробел</b></p>
+            <p><span class="example food"></span> - еда</p>
+            <p><span class="example anti"></span> - анти-еда</p>
+        </div>
+        <div class="container">
+            <form  onsubmit="return false">
+                <label>
+                    Количество еды:<br>
+                    <input id="food-count" type="number" value="25">
+                </label><br>
+                <label>
+                    Количество анти-еды:<br>
+                    <input id="anti-count" type="number" value="2">
+                </label><br>
+                <button id="start-btn">Начать игру</button>
+            </form>
+        </div>
+        <div class="container">
+            Рекорды:
+            <table>
+                <tr><td>1</td><td></td><td></td></tr>
+                <tr><td>2</td><td></td><td></td></tr>
+                <tr><td>3</td><td></td><td></td></tr>
+                <tr><td>4</td><td></td><td></td></tr>
+                <tr><td>5</td><td></td><td></td></tr>
+            </table>
+        </div>
+    </div>
+    <div id="length"></div>
+    <div id="save-score">
+        <form onsubmit="return false">
+            <input type="text" id="save-score-name" placeholder="ваше имя для истории">
+            <button id="save-score-btn">OK</button>
+        </form>
+    </div>
+    <div id="alerts"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script language="javascript" src="./js/matrix.js"></script>
+    <script language="javascript" src="./js/snake.js"></script>
+    <script language="javascript" src="./js/array_of_objects.js"></script>
+    <script language="javascript" src="./js/game.js"></script>
+    <script language="javascript" src="./js/onload.js"></script>
+
+</body>
+</html>
