@@ -1,0 +1,2 @@
+$("#btnLogin").button();
+$("#btnRegister").button();
