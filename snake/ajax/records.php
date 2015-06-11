@@ -7,7 +7,7 @@
 
         $candidate = ["name" => $_POST['name'], "score" => (int)$_POST['score']];
 
-        for($i = 1; $i < 6; $i++) {
+        for($i = 1, $l = count($records) + 2; $i < $l; $i++) {
             if((int)$records[$i]['score'] < $candidate['score']) {
                 $temp = $records[$i];
                 $records[$i] = $candidate;
@@ -18,14 +18,8 @@
         file_put_contents('./records.json', json_encode($records));
     }
 
-    if(!empty($_POST) && isset($_POST['min'])) {
-        echo $records['5']['score'];
-        die();
+    for($i = 1; $i < 6; $i++) {
+        $response .= "<tr><td>" . $i . "</td><td>" . $records[$i]['name'] . "</td><td>" . $records[$i]['score'] . "</td></tr>";
     }
-
-    foreach($records as $key => $record) {
-        $response .= "<tr><td>" . $key . "</td><td>" . $record['name'] . "</td><td>" . $record['score'] . "</td></tr>";
-    }
-
 	echo $response;
 ?>

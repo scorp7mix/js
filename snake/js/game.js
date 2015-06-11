@@ -32,15 +32,27 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
     var minScore = 0;
 
-    // ПРИВАТНЫЕ ФУНКЦИИ
+    // создание
+    $.ajaxSetup({
+        error: function ajaxErr(XMLHttpRequest) {
+            $('.container table').empty().html('<p>' +
+                '<b style="color: red;">Сервер данных не отвечает!' +
+                '<br>Ошибка: ' + XMLHttpRequest.status +
+                '<br>Статус: ' + XMLHttpRequest.statusText + '</b></p>');
+        }
+    });
 
-    // вывод ошибки при ajax запросе
-    function ajaxErr(XMLHttpRequest) {
-        $('.container table').empty().html('<p>' +
-            '<b style="color: red;">Сервер данных не отвечает!' +
-            '<br>Ошибка: ' + XMLHttpRequest.status +
-            '<br>Статус: ' + XMLHttpRequest.statusText + '</b></p>');
-    }
+    matrix = new Matrix(contentId, rows, cols);
+    matrix.create();
+
+    head = {x: 1, y: 1};
+    matrix.setCell(head, 'body');
+
+    snake = new Snake(matrix);
+    food = new ArrayOfObjects(matrix, foodCount, 'food');
+    anti = new ArrayOfObjects(matrix, antiCount, 'anti');
+
+    // ПРИВАТНЫЕ ФУНКЦИИ
 
     // вывод ошибки при убийстве об стену
     function errBlock() {
@@ -122,24 +134,6 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
     // ПУБЛИЧНЫЕ МЕТОДЫ
 
-    // создание
-    self.create = function () {
-        matrix = new Matrix(contentId, rows, cols);
-        matrix.create();
-
-        head = {x: 1, y: 1};
-        matrix.setCell(head, 'body');
-
-        snake = new Snake(matrix);
-        snake.create();
-        food = new ArrayOfObjects(matrix, foodCount, 'food');
-        food.create();
-        anti = new ArrayOfObjects(matrix, antiCount, 'anti');
-        anti.create();
-
-        setGameSpeed(300);
-    };
-
     // смена направления движения
     self.setCourse = function (newCourse) {
         course = newCourse;
@@ -159,23 +153,12 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
     // обновление рекордов
     self.scoresRefresh = function(candidate) {
-        var data = candidate ? "name=" + candidate.name + "&score=" + candidate.score : '';
-        $.ajax("./ajax/records.php", {
-                type: "POST",
-                data: data,
-                success: function (data) {
-                    $('.container table').empty().html(data);
-                },
-                error: ajaxErr
-            }
-        );
-        $.ajax("./ajax/records.php", {
-                type: "POST",
-                data: "min=true",
-                success: function (data) {
-                    minScore = Number(data);
-                },
-                error: ajaxErr
+        var data = candidate ? {name: candidate.name, score: candidate.score} : '';
+        $.post(
+            "./ajax/records.php",
+            data,
+            function (data) {
+                $('.container table').html(data);
             }
         );
     };

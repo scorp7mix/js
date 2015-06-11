@@ -2,10 +2,10 @@
 // Entering
 //
 $(document).ready(function() {
-	var m1 = new Matrix('matrix1', 20, 20);
+	var m1 = new Matrix('matrix1', 10, 10);
 	m1.create();
 
-	var snake = new Snake(10, 10, 'right', 3);
+	var snake = new Snake(1, 1, 'right', 3);
     snake.create();
 
     var point = Food(m1);
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     gamePlay = function (onOff) {
         if (onOff == true) {
-            if (dif == 1) var speed = 300;
+            if (dif == 1) var speed = 500;
             if (dif == 2) var speed = 200;
             if (dif == 3) var speed = 100;
             startGame = setInterval(snake.move, speed);
@@ -47,6 +47,7 @@ $(document).ready(function() {
         gamePlay(true);
     });
 
+    var pause = false;
     var LEFT = 37;
     var UP = 38;
     var RIGHT = 39;
@@ -54,7 +55,6 @@ $(document).ready(function() {
 
     $(document).bind('keydown', function(e) {
         var key = e.keyCode;
-
         switch(key) {
             case LEFT:
             snake.course = 'left';
@@ -68,6 +68,9 @@ $(document).ready(function() {
             case BOTTOM:
             snake.course = 'bottom';
             break;
+            case 32:
+                pause ? gamePlay(true) : gamePlay(false);
+                pause = !pause;break;
         }
     });
 });

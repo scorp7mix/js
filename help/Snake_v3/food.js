@@ -1,4 +1,5 @@
 function Food(matrix) {
+    console.log('new food');
     this.matrix = matrix;
 
     randomCell = function() {
@@ -9,10 +10,15 @@ function Food(matrix) {
         return rand;
     };
 
+    var row, col;
     //Checking is food putted on body of snake or not
     do {
-        var row = randomCell();
-        var col = randomCell();
-    } while (matrix.getCell(row, col, "snake"));
+        row = randomCell();
+        col = randomCell();
+        console.log('try: '+row+'x'+col);
+        console.log(matrix.getCell(row, col, "snake") ? 'тут змея' : 'тут змеи нет');
+        console.log(matrix.getCell(row, col, "food") ? 'тут еда' : 'тут еды нет');
+    } while (matrix.getCell(row, col, "snake") || matrix.getCell(row, col, "food"));
+    console.log('found on: '+row+'x'+col);
     matrix.setFood(row, col, true);
 }

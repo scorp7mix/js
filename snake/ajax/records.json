@@ -1,1 +1,38 @@
-{"1":{"name":"max","score":76},"2":{"name":"max","score":61},"3":{"name":"max","score":10},"4":{"name":"m","score":3},"5":{"name":"max","score":3}}
+{
+  "1": {
+    "name": "max",
+    "score": 76
+  },
+  "2": {
+    "name": "max",
+    "score": 61
+  },
+  "3": {
+    "name": "Max2",
+    "score": 21
+  },
+  "4": {
+    "name": "Max",
+    "score": 10
+  },
+  "5": {
+    "name": "max",
+    "score": 10
+  },
+  "6": {
+    "name": "maxim",
+    "score": 7
+  },
+  "7": {
+    "name": "Max2",
+    "score": 6
+  },
+  "8": {
+    "name": "ya",
+    "score": 4
+  },
+  "9": {
+    "name": "maxim3",
+    "score": 3
+  }
+}

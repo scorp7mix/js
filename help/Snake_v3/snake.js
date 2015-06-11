@@ -15,6 +15,7 @@ function Snake(row, col, course, length) {
 	};
 
 	this.move = function() {
+        console.log('move');
         var eat = false;
         var head = {};
         head.x = snake[0].x;
@@ -50,6 +51,7 @@ function Snake(row, col, course, length) {
             if (yourRes <= 10) resText = 'I beleive you can better.';
             if (yourRes > 10 && yourRes <= 20) resText = 'It seams you was hungry. :)';
             if (yourRes > 20) resText = 'Very good result! Congratulations!';
+/*
 
             //Animating snake death
             $('.snake').effect('explode', {}, 400);
@@ -75,12 +77,13 @@ function Snake(row, col, course, length) {
             }).html('<center>You eated <b>' + yourRes + '</b> fruits. <br />'
             + resText + '<br />Try again!</center>');
 
+*/
         //Stop game
         gamePlay(false);
-
+return;
         }
 
-        that.setSnake(snake, false, matrix);
+        //that.setSnake(snake, false, matrix);
 
         // Adding head
         snake.unshift(head);
@@ -108,8 +111,12 @@ function Snake(row, col, course, length) {
 
                 eat = true;
                 var food = new Food(matrix);
+                break;
             }
         }
+
+        that.setSnake(snake, false, matrix);
+
         // Deleting tail
         if (!eat) snake.pop();
         that.setSnake(snake, true, matrix);

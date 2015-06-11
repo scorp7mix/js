@@ -15,6 +15,7 @@ function Matrix(containerId, rows, cols) {
 		for (var i = 0; i < n; i++) {
 			var div = document.createElement('div');
 			div.className = 'cell';
+            div.id = parseInt(i/rows + 1) + 'x' + (i%rows + 1);
 			matrix.appendChild(div);
 		}
 	};

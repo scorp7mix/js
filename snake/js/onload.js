@@ -39,15 +39,11 @@ $(document).ready(function () {
 
     $(document).on("keydown", checkKeyDown);
 
-    $('#start-btn').on('click', function() {
-        if(game) {
-            game.reset($('#food-count').val(), $('#anti-count').val());
-        } else {
-            game = new Game('#matrix1', 20, 20, $('#food-count').val(), $('#anti-count').val());
-            game.create();
-        }
+    game = new Game('#matrix1', 20, 20, $('#food-count').val(), $('#anti-count').val());
+    game.scoresRefresh();
 
-        game.scoresRefresh();
+    $('#start-btn').on('click', function() {
+        game.reset($('#food-count').val(), $('#anti-count').val());
 
         $("#title").fadeOut(0);
         $("#alerts, #length").empty();

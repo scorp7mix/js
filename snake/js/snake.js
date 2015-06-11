@@ -31,6 +31,5 @@ function Snake(matrix) {
 
     self.clear = function() {
         body = [];
-    }
-
+    };
 }
