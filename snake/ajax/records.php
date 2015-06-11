@@ -1,4 +1,8 @@
 <?php
+
+    // CORS
+    header("Access-Control-Allow-Origin: *");
+
 	$response = '';
 
     $records = json_decode(file_get_contents('./records.json'), true);
@@ -22,4 +26,3 @@
         $response .= "<tr><td>" . $i . "</td><td>" . $records[$i]['name'] . "</td><td>" . $records[$i]['score'] . "</td></tr>";
     }
 	echo $response;
-?>
