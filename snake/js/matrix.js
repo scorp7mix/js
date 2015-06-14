@@ -78,8 +78,8 @@ function Matrix(containerId, rows, cols) {
         var newCell = $('<div>');
         newCell.addClass('deadCell');
         newCell.css({
-            top: pos.top - 9.5,
-            left: pos.left - 9.5
+            top: pos.top,
+            left: pos.left - 5
         });
         $("body").append(newCell);
         newCell.toggle("explode");

@@ -1,6 +1,6 @@
 // КЛАСС ИГРЫ
 
-function Game(contentId, rows, cols, foodCount, antiCount) {
+function Game(contentId, rows, cols, foodCount, antiCount, speed) {
     var self = this;
 
     rows = rows || 20;
@@ -26,11 +26,8 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
     var gameTimer;
     var pause;
-    var speed;
 
     var alerts = $('#alerts');
-
-    var minScore = 0;
 
     // создание
     $.ajaxSetup({
@@ -64,19 +61,33 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
     // остановка игры
     function gameOver() {
         clearInterval(gameTimer);
-        $('#title').fadeIn(2000);
-        if(snake.getLength() > minScore) {
-            $('#save-score').css("display", "block");
-            $('#save-score-name').focus();
-        } else {
-            $('#start-btn').focus();
-        }
+        $('#speed-slider').slider("enable");
+        $('#title').css("visibility", "visible").fadeIn(2000);
+
+        $('#save-score').dialog({
+            autoOpen: false,
+            width: 320,
+            modal: true,
+            buttons: {
+                'Сохранить': function() {
+                    self.scoresRefresh({
+                        name: $('#save-score-name').val(),
+                        score: self.score
+                    });
+                    $('#save-score').dialog("close");
+                }
+            },
+            close: function() {
+                $('#save-score').dialog("close");
+            }
+        }).dialog("open");
     }
 
-    // изменение скорости игры
+    // установка скорости игры
     function setGameSpeed(newSpeed) {
         clearInterval(gameTimer);
         if(newSpeed != 0) {
+            speed = newSpeed;
             matrix.animationSpeed = newSpeed;
             gameTimer = setInterval(gameplay, newSpeed);
         }
@@ -124,7 +135,6 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
 
         $('#length').html("Длина змея: " + snake.getLength());
         self.score = snake.getLength();
-        setGameSpeed(speed = 300 - snake.getLength() * 3);
 
         if(snake.getLength() + food.size + anti.size == rows * cols) {
             alerts.html('ПОБЕДА!!!');
@@ -144,9 +154,11 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
         if(!pause) {
             clearInterval(gameTimer);
             alerts.html("Игра на паузе");
+            $('#speed-slider').slider("enable");
         } else {
             setGameSpeed(speed);
             alerts.empty();
+            $('#speed-slider').slider("disable");
         }
         pause = !pause;
     };
@@ -161,6 +173,11 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
                 $('.container table').html(data);
             }
         );
+    };
+
+    // изменение скорости игры
+    self.changeGameSpeed = function (newSpeed) {
+        speed = newSpeed;
     };
 
     // обновление игрового поля
@@ -187,6 +204,8 @@ function Game(contentId, rows, cols, foodCount, antiCount) {
         food.create();
         anti.create();
 
-        setGameSpeed(300);
+        self.scoresRefresh();
+
+        setGameSpeed(speed);
     };
 }

@@ -3,19 +3,27 @@
 <head>
     <meta charset="utf-8">
     <title>GAME</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" type="text/css" media="screen">
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="screen"/>
 </head>
 <body>
+<div id="left">
     <div id="matrix1"></div>
     <div id="title">Игра закончена</div>
+    <div id="length"></div>
+    <div id="alerts"></div>
+</div>
+<div id="right">
     <div id="options">
         <div class="container">
             <p><b>Пауза - пробел</b></p>
+
             <p><span class="example food"></span> - еда</p>
+
             <p><span class="example anti"></span> - анти-еда</p>
         </div>
         <div class="container">
-            <form  onsubmit="return false">
+            <form onsubmit="return false">
                 <label>
                     Количество еды:<br>
                     <input id="food-count" type="number" value="7">
@@ -24,37 +32,83 @@
                     Количество анти-еды:<br>
                     <input id="anti-count" type="number" value="2">
                 </label><br>
+                <label>
+                    Скорость змеи:
+                    <input type="text" id="speed" readonly style="border: none" value="300">
+                    <div id="speed-slider"></div>
+                </label><br>
                 <button id="start-btn">Начать игру</button>
             </form>
         </div>
         <div class="container">
-            Рекорды:
+            <b>Рекорды:</b>
+            <div class="custom-search">
+                <form onsubmit="return false">
+                    <input type="text" class="custom-search-text" placeholder="поиск по имени">
+                    <div class="custom-search-list">
+                        <ul>
+                        </ul>
+                    </div>
+                </form>
+            </div>
             <table>
-                <tr><td>1</td><td></td><td></td></tr>
-                <tr><td>2</td><td></td><td></td></tr>
-                <tr><td>3</td><td></td><td></td></tr>
-                <tr><td>4</td><td></td><td></td></tr>
-                <tr><td>5</td><td></td><td></td></tr>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </table>
         </div>
-    </div>
-    <div id="length"></div>
-    <div id="save-score">
-        <form onsubmit="return false">
-            <input type="text" id="save-score-name" placeholder="ваше имя для истории">
-            <button id="save-score-btn">OK</button>
-        </form>
-    </div>
-    <div id="alerts"></div>
+        <div id="save-score" title="Сохранение результата">
+            <form>
+                <fieldset>
+                    <label for="save-score-name">Ваше имя для истории</label>
+                    <input type="text" name="name" id="save-score-name" class="text ui-widget-content ui-corner-all">
+                </fieldset>
+            </form>
+        </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script language="javascript" src="./js/matrix.js"></script>
-    <script language="javascript" src="./js/snake.js"></script>
-    <script language="javascript" src="./js/array_of_objects.js"></script>
-    <script language="javascript" src="./js/game.js"></script>
-    <script language="javaScript" src="./js/plugin.js"></script>
-    <script language="javascript" src="./js/onload.js"></script>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script language="javascript" src="./js/matrix.js"></script>
+<script language="javascript" src="./js/snake.js"></script>
+<script language="javascript" src="./js/array_of_objects.js"></script>
+<script language="javascript" src="./js/game.js"></script>
+<script language="javaScript" src="./js/plugin.js"></script>
+<script language="javascript" src="./js/onload.js"></script>
 
 </body>
 </html>

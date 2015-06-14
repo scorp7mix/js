@@ -20,19 +20,31 @@
     "score": 10
   },
   "6": {
+    "name": "user",
+    "score": 10
+  },
+  "7": {
     "name": "maxim",
     "score": 7
   },
-  "7": {
+  "8": {
+    "name": "max",
+    "score": 6
+  },
+  "9": {
     "name": "Max2",
     "score": 6
   },
-  "8": {
+  "10": {
     "name": "ya",
     "score": 4
   },
-  "9": {
+  "11": {
     "name": "maxim3",
     "score": 3
+  },
+  "12": {
+    "name": "new user",
+    "score": 1
   }
 }

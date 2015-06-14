@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/snake/ajax/records.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/snake/ajax/records.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/snake/ajax/records_backup.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snake/js/plugin.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/snake/js/snake.js" charset="UTF-8" />
   </component>
 </project>

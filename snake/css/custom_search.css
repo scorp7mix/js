@@ -1,0 +1,30 @@
+.custom-search {
+    display: block;
+    position: relative;
+}
+.custom-search form input {
+    width: 200px;
+}
+.custom-search-list {
+    display: none;
+    position: absolute;
+    width: 212px;
+    height: auto;
+    top: 27px;
+    left: 0;
+    border: 1px solid #999;
+    z-index: 20;
+    background-color: #fff;
+}
+.custom-search-list ul {
+    margin: 0;
+    padding: 2px;
+}
+.custom-search-list li {
+    list-style: none;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.custom-search-list li:hover {
+    background-color: #ddd;
+}

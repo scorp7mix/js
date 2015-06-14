@@ -1,9 +1,23 @@
+@import "./custom_search.css";
+
 body {
     padding: 30px;
+    margin: auto;
     font-family: monospace;
     position: relative;
-    width: 800px;
+    width: 700px;
 }
+
+#left {
+    width: 425px;
+    float: left;
+}
+
+#right {
+    width: 275px;
+    float: left;
+}
+
 #matrix1 {
     float: left;
     width: 400px;
@@ -26,6 +40,7 @@ body {
     font-size: 60px;
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
+    visibility: hidden;
 }
 
 .cell {
@@ -76,7 +91,7 @@ body {
     float: left;
     width: 250px;
     box-sizing: border-box;
-    padding: 0 0 0 30px;
+    padding: 0 0 0 10px;
 }
 
 .example {
@@ -89,8 +104,7 @@ body {
 
 .container {
     display: block;
-    margin-bottom: 10px;
-    margin-left: -15px;
+    margin-bottom: 9px;
     border: 1px solid #999;
     border-radius: 5px;
     padding: 10px;
@@ -130,14 +144,33 @@ body {
     border: 1px solid #999;
     border-radius: 5px;
     padding: 20px 0 0 30px;
-    margin-bottom: 10px;
+    margin: 20px 0 0;
 }
+
 
 #save-score {
     display: none;
-    float: left;
-    border: 1px solid red;
-    border-radius: 5px;
-    padding: 10px;
-    margin-left: 18px;
+    font-family: monospace !important;
+}
+#save-score input {
+    margin: 10px auto 0;
+    font-family: monospace;
+    width: 80%;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#save-score fieldset {
+    border: none;
+}
+.ui-widget {
+    font-family: monospace;
+}
+.ui-widget button {
+    font-family: monospace;
+    font-size: 0.7em;
+}
+
+#speed {
+    font-family: monospace;
 }
