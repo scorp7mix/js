@@ -60,6 +60,14 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
         gameOver();
     }
 
+    // учет набранных очков
+    function changeScore(type) {
+        if(type == 'food') self.score += (500 - speed);
+        if(type == 'anti') self.score -= (speed * 2);
+        if(self.score < 0) self.score = 0;
+        $('#length').html("Результат: " + self.score);
+    }
+
     // остановка игры
     function gameOver() {
         clearInterval(gameTimer);
@@ -123,10 +131,12 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
                 gameOver();
                 return;
             case 'food':
+                changeScore('food');
                 matrix.growAnimate(head, 'body-green');
                 food.replaceObj(head);
                 break;
             case 'anti':
+                changeScore('anti');
                 matrix.growAnimate(head, 'body-red');
                 anti.replaceObj(head);
                 snake.deleteTail(true);
@@ -138,9 +148,6 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
         }
 
         snake.addHead(head, courseChange);
-
-        $('#length').html("Длина змея: " + snake.getLength());
-        self.score = snake.getLength();
 
         if(snake.getLength() + food.size + anti.size == rows * cols) {
             alerts.html('ПОБЕДА!!!');
@@ -201,6 +208,7 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
         prevCourse = 'right';
         pause = false;
         self.gameActive = true;
+        self.score = 0;
 
         matrix.create();
 

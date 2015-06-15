@@ -35,9 +35,6 @@ function checkKeyDown(e) {
 // точка входа
 $(document).ready(function () {
 
-    game = new Game('#matrix1', 20, 20, $('#food-count').val(), $('#anti-count').val(), $("#speed").val());
-    game.scoresRefresh();
-
     $('#speed-slider').slider({
         value:300,
         min: 100,
@@ -48,6 +45,9 @@ $(document).ready(function () {
             game.changeGameSpeed($("#speed-slider").slider("value"));
         }
     });
+
+    game = new Game('#matrix1', 20, 20, $('#food-count').val(), $('#anti-count').val(), $("#speed-slider").slider("value"));
+    game.scoresRefresh();
 
     $('#start-btn').on('click', function() {
         $(document).on("keydown", checkKeyDown);
@@ -85,9 +85,4 @@ $(document).ready(function () {
             });
         }
     });
-
-    $('#speed-slider').change( function() {
-        game.changeGameSpeed($("#speed-slider").slider("value"));
-    });
-
 });
