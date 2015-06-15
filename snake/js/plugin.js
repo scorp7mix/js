@@ -8,6 +8,7 @@ $.fn.customSearch = function(options) {
             type: "GET",
             url: options.url,
             data: {searchText: $(self).val()},
+            timeout: 140,
             success: function (data) {
                 if (data.length != 0) {
 
