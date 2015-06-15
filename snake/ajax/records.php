@@ -11,10 +11,13 @@
 
         $candidate = ["name" => $_POST['name'], "score" => (int)$_POST['score']];
 
-        for($i = 1, $l = count($records); $i < $l + 2; $i++) {
-            if(@((int)$records[$i]['score'] < $candidate['score'])) {
-                @($temp = $records[$i]);
-                @($records[$i] = $candidate);
+        end($records);
+        $records[key($records) + 1] = ["name" => '', "score" => 0];
+
+        for($i = 1, $l = count($records); $i < $l + 1; $i++) {
+            if((int)$records[$i]['score'] < $candidate['score']) {
+                $temp = $records[$i];
+                $records[$i] = $candidate;
                 $candidate = $temp;
             }
         }

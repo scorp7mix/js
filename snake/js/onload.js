@@ -27,7 +27,7 @@ function checkKeyDown(e) {
             game.setCourse('down');
             break;
         case keyCodes['SPACE']:
-            game.togglePause();
+            if(game.gameActive) game.togglePause();
             break;
     }
 }
@@ -89,4 +89,5 @@ $(document).ready(function () {
     $('#speed-slider').change( function() {
         game.changeGameSpeed($("#speed-slider").slider("value"));
     });
+
 });

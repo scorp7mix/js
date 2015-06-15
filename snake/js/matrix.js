@@ -38,11 +38,16 @@ function Matrix(containerId, rows, cols) {
     };
 
     // установить значение ячейки
-    self.setCell = function (obj, val) {
+    self.setCell = function (obj, val, bodyType, bodyData) {
         var cell = getCellByPosition(obj);
         switch (val) {
             case 'body':
-                cell.attr('class', 'cell body');
+                if(bodyType != 'tail') {
+                    cell.data("head", bodyData.head);
+                    cell.data("body", bodyData.body);
+                    cell.data("tail", bodyData.tail);
+                }
+                cell.attr('class', 'cell body ' + cell.data(bodyType));
                 break;
             case 'food':
                 cell.attr('class', 'cell food');
@@ -68,7 +73,7 @@ function Matrix(containerId, rows, cols) {
             top: pos.top - 9.5,
             left: pos.left - 9.5
         });
-        $("body").append(newCell);
+        matrix.append(newCell);
         newCell.animate({height: 19, width: 19, top: pos.top, left: pos.left}, 500, function(){newCell.remove();});
     };
 
@@ -79,10 +84,10 @@ function Matrix(containerId, rows, cols) {
         newCell.addClass('deadCell');
         newCell.css({
             top: pos.top,
-            left: pos.left - 5
+            left: pos.left
         });
-        $("body").append(newCell);
-        newCell.toggle("explode");
+        matrix.append(newCell);
+        newCell.effect("explode",{pieces: 16}, 1000);
         setTimeout(function() {newCell.remove()}, 1000);
     };
 

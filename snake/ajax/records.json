@@ -1,50 +1,62 @@
 {
   "1": {
+    "name": "maxim",
+    "score": 126
+  },
+  "2": {
+    "name": "maxim",
+    "score": 112
+  },
+  "3": {
     "name": "max",
     "score": 76
   },
-  "2": {
+  "4": {
     "name": "max",
     "score": 61
   },
-  "3": {
+  "5": {
     "name": "Max2",
     "score": 21
-  },
-  "4": {
-    "name": "Max",
-    "score": 10
-  },
-  "5": {
-    "name": "max",
-    "score": 10
   },
   "6": {
     "name": "user",
     "score": 10
   },
   "7": {
-    "name": "maxim",
-    "score": 7
+    "name": "Max",
+    "score": 10
   },
   "8": {
     "name": "max",
-    "score": 6
+    "score": 10
   },
   "9": {
+    "name": "maxim",
+    "score": 7
+  },
+  "10": {
+    "name": "max",
+    "score": 6
+  },
+  "11": {
     "name": "Max2",
     "score": 6
   },
-  "10": {
+  "12": {
     "name": "ya",
     "score": 4
   },
-  "11": {
+  "13": {
     "name": "maxim3",
     "score": 3
   },
-  "12": {
+  "14": {
     "name": "new user",
+    "score": 1
+  },
+  "15": {
+    "name": "super",
     "score": 1
   }
 }

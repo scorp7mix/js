@@ -15,7 +15,7 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
     var anti;           // экземпляр класса объектов для анти-еды
     self.score = 0;
 
-    var course = 'right';
+    var course;
     var prevCourse;
     var antiCourses = {
         'left': 'right',
@@ -26,6 +26,8 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
 
     var gameTimer;
     var pause;
+
+    self.gameActive = false;
 
     var alerts = $('#alerts');
 
@@ -42,8 +44,8 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
     matrix = new Matrix(contentId, rows, cols);
     matrix.create();
 
-    head = {x: 1, y: 1};
-    matrix.setCell(head, 'body');
+    head = {x: 1, y: 2};
+    //matrix.setCell(head, 'body');
 
     snake = new Snake(matrix);
     food = new ArrayOfObjects(matrix, foodCount, 'food');
@@ -61,6 +63,8 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
     // остановка игры
     function gameOver() {
         clearInterval(gameTimer);
+        self.gameActive = false;
+
         $('#speed-slider').slider("enable");
         $('#title').css("visibility", "visible").fadeIn(2000);
 
@@ -105,6 +109,8 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
             case 'down': if (head.x == rows) {errBlock(); return;} else {head.x++;} break;
         }
 
+        var courseChange = prevCourse + ' to ' + course;
+
         prevCourse = course;
 
         var turn = matrix.getCell(head);
@@ -124,14 +130,14 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
                 matrix.growAnimate(head, 'body-red');
                 anti.replaceObj(head);
                 snake.deleteTail(true);
-                if(snake.getLength() > 0) snake.deleteTail(true);
+                if(snake.getLength() > 1) snake.deleteTail(true);
                 break;
             default:
                 snake.deleteTail(true);
                 break;
         }
 
-        snake.addHead(head);
+        snake.addHead(head, courseChange);
 
         $('#length').html("Длина змея: " + snake.getLength());
         self.score = snake.getLength();
@@ -165,10 +171,10 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
 
     // обновление рекордов
     self.scoresRefresh = function(candidate) {
-        var data = candidate ? {name: candidate.name, score: candidate.score} : '';
+        var request = candidate ? {name: candidate.name, score: candidate.score} : '';
         $.post(
             "./ajax/records.php",
-            data,
+            request,
             function (data) {
                 $('.container table').html(data);
             }
@@ -192,13 +198,13 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
         anti.size = antiCount;
 
         course = 'right';
-        prevCourse = '';
+        prevCourse = 'right';
         pause = false;
+        self.gameActive = true;
 
         matrix.create();
 
-        head = {x: 1, y: 1};
-        matrix.setCell(head, 'body');
+        head = {x: 1, y: 2};
 
         snake.create();
         food.create();
