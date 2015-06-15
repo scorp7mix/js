@@ -65,7 +65,7 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
         if(type == 'food') self.score += (500 - speed);
         if(type == 'anti') self.score -= (speed * 2);
         if(self.score < 0) self.score = 0;
-        $('#length').html("Результат: " + self.score);
+        $('#length').html("<b>Результат:</b> " + self.score);
     }
 
     // остановка игры

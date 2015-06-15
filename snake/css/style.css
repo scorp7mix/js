@@ -58,11 +58,6 @@ body {
     background-size: cover !important;
 }
 
-.body {
-    /*background: url('../img/body3.png') center no-repeat;*/
-    margin: 0;
-    padding: 0;
-}
 .body-green {
     background-color: rgba(0, 255, 0, .5);
     border-radius: 10px;
@@ -71,21 +66,26 @@ body {
     background-color: rgba(255, 0, 0, .5);
     border-radius: 10px;
 }
-.body-left-up { background: url('../img/left-up.png') no-repeat; }
-.body-left-down { background: url('../img/left-down.png')  no-repeat; }
-.body-right-up { background: url('../img/right-up.png')  no-repeat; }
-.body-right-down { background: url('../img/right-down.png')  no-repeat; }
-.body-horizontal { background: url('../img/body-horizontal.png')  no-repeat; }
-.body-vertical { background: url('../img/body-vertical.png')  no-repeat; }
-.head-left { background: url('../img/head-left.png')  no-repeat; }
-.head-up { background: url('../img/head-up.png')  no-repeat; }
-.head-right { background: url('../img/head-right.png')  no-repeat; }
-.head-down { background: url('../img/head-down.png')  no-repeat; }
-.tail-left { background: url('../img/tail-left.png')  no-repeat; }
-.tail-up { background: url('../img/tail-up.png')  no-repeat; }
-.tail-right { background: url('../img/tail-right.png')  no-repeat; }
-.tail-down { background: url('../img/tail-down.png')  no-repeat; }
+.body-left-up { background: url('../img/left-up.png');}
+.body-left-down { background: url('../img/left-down.png');}
+.body-right-up { background: url('../img/right-up.png');}
+.body-right-down { background: url('../img/right-down.png');}
+.body-horizontal { background: url('../img/body-horizontal.png');}
+.body-vertical { background: url('../img/body-vertical.png');}
+.head-left { background: url('../img/head-left.png');}
+.head-up { background: url('../img/head-up.png');}
+.head-right { background: url('../img/head-right.png');}
+.head-down { background: url('../img/head-down.png');}
+.tail-left { background: url('../img/tail-left.png');}
+.tail-up { background: url('../img/tail-up.png');}
+.tail-right { background: url('../img/tail-right.png');}
+.tail-down { background: url('../img/tail-down.png');}
 
+.body {
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+}
 
 .food {
     background: url('../img/food.png') center no-repeat;
@@ -122,7 +122,7 @@ body {
 
 .container {
     display: block;
-    margin-bottom: 9px;
+    margin-bottom: 18px;
     border: 1px solid #999;
     border-radius: 5px;
     padding: 10px;
