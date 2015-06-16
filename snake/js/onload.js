@@ -49,7 +49,10 @@ $(document).ready(function () {
     game = new Game('#matrix1', 20, 20, $('#food-count').val(), $('#anti-count').val(), $("#speed-slider").slider("value"));
     game.scoresRefresh();
 
+    //$(document).on("keydown", checkKeyDown);
+
     $('#start-btn').on('click', function() {
+        $(document).unbind("keydown");
         $(document).on("keydown", checkKeyDown);
         $("#speed-slider").slider("disable");
 

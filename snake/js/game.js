@@ -76,21 +76,21 @@ function Game(contentId, rows, cols, foodCount, antiCount, speed) {
         $('#speed-slider').slider("enable");
         $('#title').css("visibility", "visible").fadeIn(2000);
 
-        $('#save-score').dialog({
+        $('#save-score').unbind("keypress").dialog({
             autoOpen: false,
             width: 320,
             modal: true,
-            buttons: {
-                'Сохранить': function() {
-                    self.scoresRefresh({
-                        name: $('#save-score-name').val(),
-                        score: self.score
-                    });
-                    $('#save-score').dialog("close");
-                }
-            },
             close: function() {
                 $('#save-score').dialog("close");
+            }
+        }).keypress(function(e) {
+            if (e.keyCode == 13) {
+                self.scoresRefresh({
+                    name: $('#save-score-name').val(),
+                    score: self.score
+                });
+                $('#save-score').dialog("close");
+                return false;
             }
         }).dialog("open");
     }
